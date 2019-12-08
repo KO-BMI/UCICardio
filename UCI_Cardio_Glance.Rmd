@@ -1,0 +1,32 @@
+---
+title: "R Notebook"
+output: html_notebook
+editor_options: 
+  chunk_output_type: inline
+---
+
+
+```{r}
+
+library(ggplot2)
+df<-uci_cardio_df_cleaned
+dim(df)
+colnames(df)
+rownames(df)
+
+
+```
+
+```{r}
+ggplot(df, aes(x=serum_cholesterol_mg_dl, y=fasting_blood_sugar_gt_120_mg_dl_yn)) + geom_point(aes(color=sex_mf)) + geom_smooth(method="lm") 
+
+ggplot(df, aes(x=age, y=maximum_heart_rate_achieved)) + geom_point(aes(color=sex_mf)) + geom_smooth(method="lm") 
+
+ggplot(df, aes(x=thal, y=resting_blood_pressure)) + geom_point(aes(color=age)) + geom_smooth(method="lm") #
+
+ggplot(df, aes(x=age, y=chest_pain_type)) + geom_bar(aes(color=sex_mf)) 
+
+g <- ggplot(df, aes(chest_pain_type,fill=age ))
+# Number of cars in each class:
+g + geom_bar(aes(fill=sex_mf))
+```
